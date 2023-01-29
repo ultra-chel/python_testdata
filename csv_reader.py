@@ -19,18 +19,19 @@ with open(CSV_FILE_PATH, newline='') as d:
 result = []
 for user in users:
     user_books = []
+    user_result = {"name": user.get("name"), "gender": user.get("name"), "address": user.get("address"),
+                   "age": user.get("age")}
     for i in range(count_books):
         user_books.append(books.pop())
 
-    user["books"] = user_books
-    result.append(user)
+    user_result["books"] = user_books
+    result.append(user_result)
 
 i = 0
-for user in users:
+for user in result:
     user_books = books.pop()
     if len(books) == 0:
         break
-
     user["books"].append(user_books)
     result[i] = user
     i += 1
