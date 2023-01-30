@@ -13,6 +13,11 @@ with open(CSV_FILE_PATH, newline='') as d:
     reader = DictReader(d)
     books = []
     for row in reader:
+        row["title"] = row.pop("Title")
+        row["author"] = row.pop("Author")
+        row["genre"] = row.pop("Genre")
+        row["pages"] = row.pop("Pages")
+        del row["Publisher"]
         books.append(row)
     count_books = math.floor(len(books) / len(users))
 
